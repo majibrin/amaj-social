@@ -1,0 +1,64 @@
+:root {
+  --emerald: #1b4332;
+  --forest: #2d6a4f;
+  --gold: #d4af37;
+  --cream: #f8f9fa;
+  --dark: #1a1a1a;
+  --shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+* { margin:0; padding:0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { background: var(--cream); color: var(--dark); padding-bottom: 70px; }
+
+/* Navigation */
+.nav-container {
+  background: var(--emerald);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.nav-menu { display: flex; justify-content: space-around; max-width: 800px; margin: 0 auto; }
+.nav-link { color: white; text-align: center; font-size: 0.8rem; }
+.nav-link i { font-size: 1.4rem; display: block; }
+
+/* Post Cards */
+.post-card {
+  background: white;
+  margin: 1rem auto;
+  max-width: 550px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.post-header { display: flex; align-items: center; margin-bottom: 10px; }
+.avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; margin-right: 12px; border: 2px solid var(--gold); }
+
+.post-img { width: 100%; border-radius: 10px; margin: 10px 0; }
+
+.post-footer { 
+  display: flex; 
+  border-top: 1px solid #eee; 
+  padding-top: 10px;
+  justify-content: space-between;
+}
+
+.like-btn, .comment-trigger {
+  background: none; border: none; cursor: pointer; color: #555; font-weight: 600;
+}
+
+.liked { color: #e63946; }
+
+/* Chat UI */
+.chat-wrapper { height: 100vh; display: flex; flex-direction: column; }
+.chat-box { flex: 1; overflow-y: auto; padding: 20px; background: #efeae2; }
+.message { margin: 5px 0; padding: 10px; border-radius: 10px; max-width: 75%; }
+.outgoing { align-self: flex-end; background: var(--forest); color: white; margin-left: auto; }
+.incoming { align-self: flex-start; background: white; }
+
+.typing-area { padding: 10px; display: flex; background: white; }
+.typing-area input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 25px; outline: none; }
