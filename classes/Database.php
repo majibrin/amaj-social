@@ -3,17 +3,33 @@ class Database {
     private static $instance = null;
     private $conn;
 
-    private $host = 'sql111.infinityfree.com';
-    private $user = 'if0_39438117';
-    private $pass = 'YOUR_PASSWORD_HERE'; 
-    private $db   = 'if0_39438117_amaj';
-
     private function __construct() {
-        $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->db);
-        if ($this->conn->connect_error) {
-            die("Connection failed: " . $this->conn->connect_error);
+        // Environment Detection
+        $is_local = (
+            $_SERVER['HTTP_HOST'] === 'localhost' || 
+            $_SERVER['HTTP_HOST'] === '127.0.0.1'
+        );
+
+        if ($is_local) {
+            $host = "localhost";
+            $user = "root";
+            $pass = "";
+            $db   = "amaj"; 
+        } else {
+            $host = "sql111.infinityfree.com";
+            $user = "if0_39438117";
+            $pass = "ImTVy0CWFG";
+            $db   = "if0_39438117_amaj";
         }
+
+        $this->conn = new mysqli($host, $user, $pass, $db);
+
+        if ($this->conn->connect_error) {
+            die("Database Connection Failed: " . $this->conn->connect_error);
+        }
+        
         $this->conn->set_charset("utf8mb4");
+        date_default_timezone_set('Africa/Lagos');
     }
 
     public static function getInstance() {
