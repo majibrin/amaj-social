@@ -1,0 +1,8 @@
+# Disable PHP execution in this directory
+<Files *.php>
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Only allow common image extensions
+Options -Indexes
